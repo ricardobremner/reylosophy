@@ -4,9 +4,9 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { notFound } from 'next/navigation';
 
-export default async function page({ params }: { params: Promise<{ id: number }> }) {
-  const id = (await params).id
-  const post = await getBlogId(`/blogs/${id}`);
+export default async function page({ params }: { params: { id: number } }) {
+  
+  const post = await getBlogId(`/blogs/${params.id}`);
 
   if (!post) {
     notFound();
